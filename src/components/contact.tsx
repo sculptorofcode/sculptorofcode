@@ -148,7 +148,7 @@ const ContactSection = ({ isLoaded }: { isLoaded: boolean; }) => {
                     fontFamily: "'Poppins', sans-serif",
                 }}
             >
-                Let's Connect
+                Let&#39;s Connect
             </motion.h2>
 
             <div className="grid gap-12">

@@ -11,6 +11,7 @@ import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import rehypeRaw from 'rehype-raw'
 import { Project } from "@/app/abstract/interface";
+import Image from "next/image";
 
 export default function ProjectDetailsContent({ projectData }: { projectData: Project }) {
     return (
@@ -143,10 +144,12 @@ export default function ProjectDetailsContent({ projectData }: { projectData: Pr
                                         </CardHeader>
                                         <CardContent className="p-2">
                                             <div className="flex items-center gap-2">
-                                                <img
+                                                <Image
                                                     src={projectData.owner.avatar_url}
                                                     alt={projectData.owner.login}
                                                     className="w-8 h-8 rounded-full"
+                                                    width={32}
+                                                    height={32}
                                                 />
                                                 <Link href={``} target="_blank">
                                                     <span>{projectData.owner.login}</span>
@@ -167,10 +170,12 @@ export default function ProjectDetailsContent({ projectData }: { projectData: Pr
                                             <div className="flex flex-wrap gap-2">
                                                 {projectData.contributors.map((contributor: any) => (
                                                     <div key={contributor.id} className="flex items-center gap-2">
-                                                        <img
+                                                        <Image
                                                             src={contributor.avatar_url}
                                                             alt={contributor.login}
                                                             className="w-8 h-8 rounded-full"
+                                                            width={32}
+                                                            height={32}
                                                         />
                                                         <Link href={`https://github.com/${contributor.login}`} target="_blank">
                                                             <span>{contributor.login}</span>
