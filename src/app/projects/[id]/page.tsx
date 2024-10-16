@@ -3,19 +3,62 @@ import { notFound } from 'next/navigation';
 import ProjectDetailsContent from './projectDetails';
 import { Octokit } from 'octokit';
 import { Project } from '@/app/abstract/interface';
+import Head from 'next/head';
+import { Metadata } from 'next';
 
+export async function generateMetadata({ params }: { params: { id: string } }): Promise<Metadata> {
+    const projectData = await getProjectData(params.id);
 
-const GithubToken = process.env.GITHUB_PERSON_API_KEY;
-const username = process.env.GITHUB_USERNAME;
+    if (!projectData) {
+        return {
+            title: 'Project Not Found - Saikat Roy',
+            description: 'The project you are looking for could not be found.',
+            robots: 'noindex, nofollow',
+        };
+    }
+
+    return {
+        title: `${projectData.title.replaceAll('-', ' ').replace(/\b\w/g, (char) => char.toUpperCase())} - Saikat Roy`,
+        description: projectData.description || 'A project by Saikat Roy focusing on web development and cybersecurity.',
+        viewport: 'width=device-width, initial-scale=1',
+        openGraph: {
+            title: projectData.title.replaceAll('-', ' ').replace(/\b\w/g, (char) => char.toUpperCase()),
+            description: projectData.description || 'A project by Saikat Roy',
+            url: projectData.html_url,
+            images: [
+                {
+                    url: projectData.owner.avatar_url || '/profile.jpg',
+                    alt: projectData.owner.login,
+                    width: 1200,
+                    height: 630,
+                },
+            ],
+        },
+        twitter: {
+            card: 'summary_large_image',
+            title: projectData.name,
+            description: projectData.description || 'A project by Saikat Roy',
+            images: [
+                {
+                    url: projectData.owner.avatar_url || '/profile.jpg',
+                    alt: projectData.owner.login,
+                },
+            ],
+        },
+        alternates: {
+            canonical: `https://www.yoursite.com/projects/${params.id}`,
+        },
+    };
+}
 
 async function getProjectData(id: string): Promise<Project | null> {
+    const GithubToken = process.env.GITHUB_PERSON_API_KEY;
+    const username = process.env.GITHUB_USERNAME;
     try {
 
         const octokit = new Octokit({ auth: GithubToken });
 
         id = decodeURIComponent(id).replace(/ /g, '-').toLowerCase();
-
-        console.log(`GET /repos/${username}/${id}`);
 
         const projectData = await octokit.request(`GET /repos/${username}/${id}`).then((response) => {
             return response.data;
@@ -81,7 +124,22 @@ const ProjectDetails = async ({ params }: { params: { id: string } }) => {
     }
 
     return (
-        <ProjectDetailsContent projectData={projectData} />
+        <>
+            <Head>
+                <title>{projectData.title.replaceAll('-', ' ').replace(/\b\w/g, (char) => char.toUpperCase())} - Saikat Roy</title>
+                <meta name="description" content={projectData.description || 'Project by Saikat Roy'} />
+                <meta property="og:title" content={projectData.title.replaceAll('-', ' ').replace(/\b\w/g, (char) => char.toUpperCase())} />
+                <meta property="og:description" content={projectData.description || 'A project by Saikat Roy.'} />
+                <meta property="og:image" content={projectData.owner.avatar_url} />
+                <meta property="og:url" content={projectData.html_url} />
+                <meta name="twitter:title" content={projectData.title.replaceAll('-', ' ').replace(/\b\w/g, (char) => char.toUpperCase())} />
+                <meta name="twitter:description" content={projectData.description || 'A project by Saikat Roy'} />
+                <meta name="twitter:image" content={projectData.owner.avatar_url} />
+                <meta name="twitter:card" content="summary_large_image" />
+                <link rel="canonical" href={`https://cyber-saikat.vercel.app/projects/${params.id}`} />
+            </Head>
+            <ProjectDetailsContent projectData={projectData} />
+        </>
     );
 }
 

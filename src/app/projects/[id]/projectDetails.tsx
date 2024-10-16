@@ -150,6 +150,7 @@ export default function ProjectDetailsContent({ projectData }: { projectData: Pr
                                                     className="w-8 h-8 rounded-full"
                                                     width={32}
                                                     height={32}
+                                                    priority={true}
                                                 />
                                                 <Link href={``} target="_blank">
                                                     <span>{projectData.owner.login}</span>
@@ -176,6 +177,7 @@ export default function ProjectDetailsContent({ projectData }: { projectData: Pr
                                                             className="w-8 h-8 rounded-full"
                                                             width={32}
                                                             height={32}
+                                                            priority={true}
                                                         />
                                                         <Link href={`https://github.com/${contributor.login}`} target="_blank">
                                                             <span>{contributor.login}</span>

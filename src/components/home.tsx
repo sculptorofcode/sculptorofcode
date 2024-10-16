@@ -82,6 +82,7 @@ const HomeSection = ({ isLoaded }: { isLoaded: boolean; }) => {
                         whileHover={{ scale: 1.05, backgroundColor: "#4c51bf" }}  // Add Framer Motion background color transition
                         whileTap={{ scale: 0.95 }}
                         className="bg-gradient-to-r from-blue-500 to-purple-600 text-white font-bold py-3 px-6 rounded-full shadow-lg transition duration-300 flex items-center justify-center text-lg"
+                        onClick={() => window.open('/Saikat_Roy_Resume.pdf', '_blank')}
                     >
                         <FaDownload className="mr-2" /> Download Resume
                     </motion.button>

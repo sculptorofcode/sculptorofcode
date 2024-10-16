@@ -56,16 +56,16 @@ const Home = () => {
         <section id="home" ref={sectionsRef.home} className={`pt-40 sm:min-h-screen flex items-center justify-center relative overflow-hidden sm:pt-20`}>
           <HomeSection isLoaded={isLoaded} />
         </section>
-        <section id="about" ref={sectionsRef.about} className='sm:py-20  py-10'>
+        <section id="about" ref={sectionsRef.about} className='sm:pt-[7.5rem] py-10 pt-[5rem]'>
           <About />
         </section>
-        <section id="skills" ref={sectionsRef.skills} className='sm:py-20  py-10'>
+        <section id="skills" ref={sectionsRef.skills} className='sm:pt-[7.5rem] py-10 pt-[5rem]'>
           <Skills />
         </section>
-        <section id="projects" ref={sectionsRef.projects} className='sm:py-20  py-10'>
+        <section id="projects" ref={sectionsRef.projects} className='sm:pt-[7.5rem] py-10 pt-[5rem]'>
           <Projects />
         </section>
-        <section id="contact" ref={sectionsRef.contact} className='sm:py-20 '>
+        <section id="contact" ref={sectionsRef.contact} className='sm:pt-[7.5rem] py-10 pt-[5rem]'>
           <Contact isLoaded={isLoaded} />
         </section>
       </main>

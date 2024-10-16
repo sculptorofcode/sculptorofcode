@@ -102,7 +102,7 @@ const Skills = () => {
                 >
                     Skills
                 </motion.h2>
-                <div className="mb-8 flex justify-start sm:justify-center space-x-4 overflow-x-auto">
+                <div className="mb-8 flex justify-start sm:justify-center space-x-4 overflow-x-auto hidden">
                     <button
                         onClick={() => setFilter('All')}
                         className={`px-4 text-sm sm:text-lg py-2 rounded ${filter === 'All' ? 'bg-blue-500 text-white' : 'bg-gray-700 text-gray-300'}`}
