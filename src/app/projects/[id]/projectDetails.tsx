@@ -59,17 +59,11 @@ export default function ProjectDetailsContent({ projectData }: { projectData: Pr
                                         rehypePlugins={[rehypeRaw]}
                                         components={{
                                             img: ({ node, ...props }) => (
-                                                <span className="relative rounded-md inline-block m-1" style={{ width: '100%', maxWidth: '100%' }}>
-                                                    <Image
-                                                        className="rounded-md w-full"
-                                                        style={{ borderRadius: '8px' }}
-                                                        width={640}
-                                                        height={320}
-                                                        alt={props.alt || 'Image'}
-                                                        src={props.src as string}
-                                                        priority={true}
-                                                    />
-                                                </span>
+                                                <img
+                                                    style={{ maxWidth: '100%', borderRadius: '8px', width: `${props.alt == 'Leading Image' ? `100%` : ``}` }}
+                                                    {...props}
+                                                    alt={props.alt || 'Image'}
+                                                />
                                             ),
                                             h1: ({ node, ...props }) => {
                                                 const id = slugify(props.children!.toString(), { lower: true, strict: true });
