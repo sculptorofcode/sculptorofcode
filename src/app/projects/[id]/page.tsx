@@ -4,7 +4,14 @@ import ProjectDetailsContent from './projectDetails';
 import { Octokit } from 'octokit';
 import { Project } from '@/app/abstract/interface';
 import Head from 'next/head';
-import { Metadata } from 'next';
+import { Metadata, Viewport } from 'next';
+
+export const viewport: Viewport = {
+    width: 'device-width',
+    initialScale: 1,
+    maximumScale: 1,
+    userScalable: false,
+}
 
 export async function generateMetadata({ params }: { params: { id: string } }): Promise<Metadata> {
     const projectData = await getProjectData(params.id);
@@ -20,14 +27,13 @@ export async function generateMetadata({ params }: { params: { id: string } }): 
     return {
         title: `${projectData.title.replaceAll('-', ' ').replace(/\b\w/g, (char) => char.toUpperCase())} - Saikat Roy`,
         description: projectData.description || 'A project by Saikat Roy focusing on web development and cybersecurity.',
-        viewport: 'width=device-width, initial-scale=1',
         openGraph: {
             title: projectData.title.replaceAll('-', ' ').replace(/\b\w/g, (char) => char.toUpperCase()),
             description: projectData.description || 'A project by Saikat Roy',
             url: projectData.html_url,
             images: [
                 {
-                    url: projectData.owner.avatar_url || '/profile.jpg',
+                    url: projectData.owner.avatar_url || 'https://cyber-saikat.vercel.app/profile.jpg',
                     alt: projectData.owner.login,
                     width: 1200,
                     height: 630,
@@ -40,13 +46,13 @@ export async function generateMetadata({ params }: { params: { id: string } }): 
             description: projectData.description || 'A project by Saikat Roy',
             images: [
                 {
-                    url: projectData.owner.avatar_url || '/profile.jpg',
+                    url: projectData.owner.avatar_url || 'https://cyber-saikat.vercel.app/profile.jpg',
                     alt: projectData.owner.login,
                 },
             ],
         },
         alternates: {
-            canonical: `https://www.yoursite.com/projects/${params.id}`,
+            canonical: `https://cyber-saikat.vercel.app/projects/${params.id}`,
         },
     };
 }
@@ -126,17 +132,7 @@ const ProjectDetails = async ({ params }: { params: { id: string } }) => {
     return (
         <>
             <Head>
-                <title>{projectData.title.replaceAll('-', ' ').replace(/\b\w/g, (char) => char.toUpperCase())} - Saikat Roy</title>
-                <meta name="description" content={projectData.description || 'Project by Saikat Roy'} />
-                <meta property="og:title" content={projectData.title.replaceAll('-', ' ').replace(/\b\w/g, (char) => char.toUpperCase())} />
-                <meta property="og:description" content={projectData.description || 'A project by Saikat Roy.'} />
-                <meta property="og:image" content={projectData.owner.avatar_url} />
-                <meta property="og:url" content={projectData.html_url} />
-                <meta name="twitter:title" content={projectData.title.replaceAll('-', ' ').replace(/\b\w/g, (char) => char.toUpperCase())} />
-                <meta name="twitter:description" content={projectData.description || 'A project by Saikat Roy'} />
-                <meta name="twitter:image" content={projectData.owner.avatar_url} />
-                <meta name="twitter:card" content="summary_large_image" />
-                <link rel="canonical" href={`https://cyber-saikat.vercel.app/projects/${params.id}`} />
+                <link rel="shortcut icon" href="https://cyber-saikat.vercel.app/images/favicon.ico" type="image/x-icon" />
             </Head>
             <ProjectDetailsContent projectData={projectData} />
         </>

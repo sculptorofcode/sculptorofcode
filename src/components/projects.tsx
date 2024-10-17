@@ -43,26 +43,29 @@ const ProjectCard: React.FC<{ project: Project }> = ({ project }) => {
                         </div>
                     </motion.div>
                 </AnimatePresence>
-                <div className="flex flex-wrap justify-between items-center mt-4">
+                <div className="flex flex-wrap justify-between items-center mt-4 gap-2">
                     <ProjectButton
                         href={project.html_url}
-                        icon={<FaGithub className="mr-2" />}
+                        icon={<FaGithub />}
                         text="GitHub"
                         ariaLabel={`View ${project.name} on GitHub`}
+                        target='_blank'
                     />
                     {project.homepage && (
                         <ProjectButton
                             href={project.homepage}
-                            icon={<FaExternalLinkAlt className="mr-2" />}
+                            icon={<FaExternalLinkAlt />}
                             text="Live Demo"
                             ariaLabel={`View live demo of ${project.name}`}
+                            target='_blank'
                         />
                     )}
                     <ProjectButton
                         href={`/projects/${project.name}`}
-                        icon={<FaInfoCircle className="mr-2" />}
+                        icon={<FaInfoCircle />}
                         text="Learn More"
                         ariaLabel={`Learn more about ${project.name}`}
+                        target='_self'
                     />
                 </div>
             </div>
@@ -71,15 +74,15 @@ const ProjectCard: React.FC<{ project: Project }> = ({ project }) => {
     );
 };
 
-const ProjectButton: React.FC<{ href?: string; onClick?: () => void; icon: React.ReactNode; text: string; ariaLabel: string }> = ({ href, onClick, icon, text, ariaLabel }) => {
-    const baseClasses = "bg-gradient-to-r from-blue-500 to-purple-600 text-white px-2 py-1 rounded-md flex items-center justify-center transition-all duration-300 ease-in-out focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500";
+const ProjectButton: React.FC<{ href?: string; onClick?: () => void; icon: React.ReactNode; text: string; ariaLabel: string, target: string }> = ({ href, onClick, icon, text, ariaLabel, target }) => {
+    const baseClasses = "bg-gradient-to-r from-blue-500 to-purple-600 text-white px-3 py-2 sm:px-2 sm:py-1 rounded-md flex items-center justify-center transition-all duration-300 ease-in-out focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 duration-500 ease-in-out";
     const hoverClasses = "hover:from-blue-600 hover:to-purple-700 hover:shadow-lg";
 
     if (href) {
         return (
-            <Link href={href}>
+            <Link href={href} target={target}>
                 <span className={`${baseClasses} ${hoverClasses}`} aria-label={ariaLabel}>
-                    {icon} {text}
+                    {icon}<span className='hidden sm:block ms-2'> {text}</span>
                 </span>
             </Link>
         );

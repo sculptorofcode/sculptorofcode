@@ -53,7 +53,6 @@ export const metadata: Metadata = {
       },
     ],
   },
-  viewport: "width=device-width, initial-scale=1.0",
 };
 
 export default function RootLayout({
@@ -65,29 +64,6 @@ export default function RootLayout({
   return (
     <>
       <ProfileProvider>
-        <Head>
-          <script
-            type="application/ld+json"
-            dangerouslySetInnerHTML={{
-              __html: JSON.stringify({
-                "@context": "https://schema.org",
-                "@type": "Person",
-                "name": "Saikat Roy",
-                "jobTitle": "Cybersecurity Enthusiast & Full Stack Developer",
-                "url": "https://cyber-saikat.vercel.app/",
-                "sameAs": [
-                  "https://github.com/CyberSaikat",
-                  "https://www.linkedin.com/in/saikat-roy-358204294/",
-                ],
-                "alumniOf": {
-                  "@type": "EducationalOrganization",
-                  "name": "Siliguri Government Polytechnic",
-                },
-                "knowsAbout": ["Cybersecurity", "Web Development", "Full-stack Development"],
-              }),
-            }}
-          />
-        </Head>
         <html lang="en">
           <body
             className={`${geistSans.variable} ${geistMono.variable} antialiased`}

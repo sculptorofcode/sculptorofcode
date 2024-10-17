@@ -63,11 +63,18 @@ body {
   }
 }
 
-.custom-li>p,.custom-li>strong {
+.custom-li>p,
+.custom-li>strong {
   display: inline-block !important;
   padding: 5px 0 10px 0px;
 }
 
+.custom-hr {
+  border: none;
+  height: 1px;
+  background: linear-gradient(to right, transparent, #3b82f6, transparent);
+  margin: 2rem 0;
+}
 @layer base {
   :root {
     --background: 0 0% 100%;

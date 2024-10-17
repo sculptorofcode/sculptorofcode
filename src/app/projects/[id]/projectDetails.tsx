@@ -3,15 +3,17 @@
 import Navigation from "@/components/Navigation";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { ChevronRight, ExternalLink, Github } from "lucide-react";
-import Link from "next/link";
-import { FaFacebook, FaFacebookF, FaGithub, FaTwitter } from "react-icons/fa";
+import { ExternalLink } from "lucide-react";
+import { FaFacebook, FaGithub, FaTwitter } from "react-icons/fa";
 import { Badge } from "@/components/ui/badge";
+import { Project } from "@/app/abstract/interface";
+import Link from "next/link";
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
-import rehypeRaw from 'rehype-raw'
-import { Project } from "@/app/abstract/interface";
+import rehypeRaw from 'rehype-raw';
 import Image from "next/image";
+import React from "react";
+import slugify from 'slugify';
 
 export default function ProjectDetailsContent({ projectData }: { projectData: Project }) {
     return (
@@ -49,28 +51,56 @@ export default function ProjectDetailsContent({ projectData }: { projectData: Pr
                                 <CardTitle>README</CardTitle>
                                 <CardDescription>Project documentation and setup instructions</CardDescription>
                             </CardHeader>
-                            <CardContent className="">
+                            <CardContent className="px-0">
                                 <div className="markdown-content">
                                     <ReactMarkdown
-                                        className="prose max-w-full"
+                                        className="prose max-w-full px-6"
                                         remarkPlugins={[remarkGfm]}
                                         rehypePlugins={[rehypeRaw]}
                                         components={{
                                             img: ({ node, ...props }) => (
-                                                <img
-                                                    style={{ maxWidth: '100%', borderRadius: '8px', width: `${props.alt == 'Leading Image' ? `100%` : ``}` }}
-                                                    {...props}
-                                                    alt={props.alt || 'Image'}
-                                                />
+                                                <span className="relative rounded-md inline-block m-1" style={{ width: '100%', maxWidth: '100%' }}>
+                                                    <Image
+                                                        className="rounded-md w-full"
+                                                        style={{ borderRadius: '8px' }}
+                                                        width={640}
+                                                        height={320}
+                                                        alt={props.alt || 'Image'}
+                                                        src={props.src as string}
+                                                        priority={true}
+                                                    />
+                                                </span>
                                             ),
-                                            h1: ({ node, ...props }) => <h1 className="text-4xl font-bold mb-4" {...props} />,
-                                            h2: ({ node, ...props }) => <h2 className="text-3xl font-semibold mt-8 mb-4" {...props} />,
-                                            h3: ({ node, ...props }) => <h3 className="text-2xl font-medium mt-6 mb-4" {...props} />,
+                                            h1: ({ node, ...props }) => {
+                                                const id = slugify(props.children!.toString(), { lower: true, strict: true });
+                                                return <h1 id={id} className="text-2xl sm:text-4xl font-bold mb-4" {...props} />;
+                                            },
+                                            h2: ({ node, ...props }) => {
+                                                const id = slugify(props.children!.toString(), { lower: true, strict: true });
+                                                return <h2 id={`#-${id}`} className="text-xl sm:text-3xl font-semibold mt-4 mb-4" {...props} />;
+                                            },
+                                            h3: ({ node, ...props }) => {
+                                                const id = slugify(props.children!.toString(), { lower: true, strict: true });
+                                                return <h3 id={`#-${id}`} className="text-lg sm:text-2xl font-medium mt-2 mb-4" {...props} />;
+                                            },
+                                            h4: ({ node, ...props }) => {
+                                                const id = slugify(props.children!.toString(), { lower: true, strict: true });
+                                                return <h4 id={`#-${id}`} className="text-base sm:text-xl font-medium mt-2 mb-3" {...props} />;
+                                            },
+                                            h5: ({ node, ...props }) => {
+                                                const id = slugify(props.children!.toString(), { lower: true, strict: true });
+                                                return <h5 id={`#-${id}`} className="text-sm sm:text-lg font-normal mt-2 mb-2" {...props} />;
+                                            },
+                                            h6: ({ node, ...props }) => {
+                                                const id = slugify(props.children!.toString(), { lower: true, strict: true });
+                                                return <h6 id={`#-${id}`} className="text-xs sm:text-base font-light mt-1 mb-2" {...props} />;
+                                            },
+
                                             p: ({ node, ...props }) => {
                                                 return <p className="text-gray-900 dark:text-gray-300 my-1" {...props} />
                                             },
                                             li: ({ node, ...props }) => {
-                                                return <li className="custom-li ms-8 list-disc list-inside text-gray-700" {...props} />
+                                                return <li className="custom-li ms-8 mb-1 list-disc list-inside text-gray-700" {...props} />
                                             },
                                             code: ({ node, ...props }) => {
                                                 return <code className="bg-gray-800 text-gray-200 p-1 rounded-md px-2" {...props} />
@@ -79,10 +109,19 @@ export default function ProjectDetailsContent({ projectData }: { projectData: Pr
                                                 return <pre className="bg-gray-800 text-gray-200 p-1 rounded-md break-words text-wrap px-4" {...props} />
                                             },
                                             a: ({ node, ...props }) => {
-                                                return <a target={'_blank'} className="text-blue-500 hover:underline" {...props} />
+                                                const isExternal = props.href?.startsWith('http');
+                                                return (
+                                                    <a
+                                                        href={props.href}
+                                                        target={isExternal ? '_blank' : '_self'}
+                                                        rel={isExternal ? 'noopener noreferrer' : undefined}
+                                                        className="text-blue-500 hover:underline"
+                                                        {...props}
+                                                    />
+                                                )
                                             },
                                             table: ({ node, ...props }) => {
-                                                return <table className="table-auto w-full" {...props} />
+                                                return <table className="table-auto w-full mb-3" {...props} />
                                             },
                                             th: ({ node, ...props }) => {
                                                 return <th className="border px-4 py-2" {...props} />
@@ -91,7 +130,7 @@ export default function ProjectDetailsContent({ projectData }: { projectData: Pr
                                                 return <td className="border px-4 py-2" {...props} />
                                             },
                                             hr: ({ node, ...props }) => {
-                                                return <hr className="border-gray-400 my-4" {...props} />
+                                                return <hr className="border-gray-400 my-4 custom-hr" {...props} />
                                             },
                                         }}
                                     >
