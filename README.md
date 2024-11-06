@@ -7,14 +7,9 @@
 
 I'm a motivated and detail-oriented Computer Science & Technology Diploma student at Siliguri Government Polytechnic, passionate about creating efficient, scalable, and user-friendly web and mobile applications, as well as promoting cybersecurity awareness.
 
-### 🎓 Education
-- **Diploma in Computer Science & Technology** | Siliguri Government Polytechnic | 2023-present
-- **Madhyamik** | WBBSE | 2022
-
 ### 📫 Connect with Me
 - Email: saikatroydot@gmail.com
 - Phone: +91 97325 48768
-- Location: Siliguri
 - Website: [saikatroy.me](https://saikatroy.me)
 
 ### 🌐 Languages
@@ -39,7 +34,6 @@ I'm a motivated and detail-oriented Computer Science & Technology Diploma studen
 ### 📊 GitHub Stats and Activity
 
 ![Profile Views](https://komarev.com/ghpvc/?username=CyberSaikat&color=blue&style=for-the-badge)
-<!-- ![Visitors](https://visitor-badge.glitch.me/badge?page_id=CyberSaikat.CyberSaikat&color=blue&style=for-the-badge) -->
 
 ![GitHub Streak](https://github-readme-streak-stats.herokuapp.com/?user=CyberSaikat&theme=tokyonight)
 
