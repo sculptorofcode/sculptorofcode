@@ -138,8 +138,6 @@ const SkillCard: React.FC<SkillCardProps> = ({ skill, categoryColor }) => (
                             className={`h-full bg-${categoryColor}-500`}
                             style={{ width: `${(skill.level / 100) * 100}%` }}
                         />
-                        <span className='bg-yellow-500'></span>
-                        <span className='bg-red-500'></span>
                     </div>
                 </motion.div>
             </TooltipTrigger>
@@ -163,6 +161,11 @@ const MergedSkillsShowcase = () => {
     };
     return (
         <div className="min-h-screen py-16 px-4">
+            <span className='bg-yellow-500'></span>
+            <span className='bg-red-500'></span>
+            <span className='bg-blue-500'></span>
+            <span className='bg-green-500'></span>
+            <span className='bg-pink-500'></span>
             <div className="max-w-6xl mx-auto">
                 <motion.h2
                     className="text-4xl sm:text-6xl font-extrabold mb-5 sm:mb-12 text-center bg-clip-text text-transparent bg-gradient-to-r to-purple-600 from-blue-500"
