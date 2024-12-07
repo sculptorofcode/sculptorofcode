@@ -135,6 +135,9 @@ const ProjectDetails = async ({ params }: { params: { id: string } }) => {
                 <link rel="shortcut icon" href="https://cyber-saikat.vercel.app/images/favicon.ico" type="image/x-icon" />
             </Head>
             <ProjectDetailsContent projectData={projectData} />
+            <footer className="text-center py-4 bg-gray-800">
+                <p>&copy; 2024 Saikat Roy. All rights reserved.</p>
+            </footer>
         </>
     );
 }

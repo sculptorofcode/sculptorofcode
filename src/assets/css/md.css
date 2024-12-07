@@ -1,0 +1,7 @@
+.prose {
+    li {
+        pre {
+            margin-left: 20px;
+        }
+    }
+}

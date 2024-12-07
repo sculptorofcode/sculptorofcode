@@ -14,11 +14,14 @@ import rehypeRaw from 'rehype-raw';
 import Image from "next/image";
 import React from "react";
 import slugify from 'slugify';
+import ParticlesBackground from "@/components/ParticlesBackground";
+import "@/assets/css/md.css";
 
 export default function ProjectDetailsContent({ projectData }: { projectData: Project }) {
     return (
         <div className="min-h-screen dark:from-gray-900 dark:to-gray-800">
             <Navigation />
+            <ParticlesBackground />
             <main className="max-w-6xl mx-auto p-4 space-y-8 pt-40">
                 <div className="space-y-4">
                     <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
@@ -60,7 +63,7 @@ export default function ProjectDetailsContent({ projectData }: { projectData: Pr
                                         components={{
                                             img: ({ node, ...props }) => (
                                                 <img
-                                                    style={{ maxWidth: '100%', borderRadius: '8px', width: `${props.alt == 'Leading Image' ? `100%` : ``}` }}
+                                                    style={{ maxWidth: '100%', borderRadius: '8px', width: `${props.alt == 'Leading Image' ? `100%` : ``}`, display: "inline-block", margin: "5px auto" }}
                                                     {...props}
                                                     alt={props.alt || 'Image'}
                                                 />
@@ -185,7 +188,7 @@ export default function ProjectDetailsContent({ projectData }: { projectData: Pr
                                                     height={32}
                                                     priority={true}
                                                 />
-                                                <Link href={``} target="_blank">
+                                                <Link href={`https://github.com/${projectData.owner.login}`} target="_blank">
                                                     <span>{projectData.owner.login}</span>
                                                 </Link>
                                             </div>

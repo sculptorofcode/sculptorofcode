@@ -69,7 +69,6 @@ export default function RootLayout({
             className={`${geistSans.variable} ${geistMono.variable} antialiased`}
           >
             <div className="min-h-screen text-gray-100">
-              <ParticlesBackground />
               {children}
             </div>
           </body>

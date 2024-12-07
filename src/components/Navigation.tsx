@@ -1,5 +1,5 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+import React, { useState, useEffect } from 'react';
+import { motion, useScroll } from 'framer-motion';
 import { FaHome, FaUser, FaCog, FaProjectDiagram, FaEnvelope } from 'react-icons/fa';
 import { usePathname, useRouter } from 'next/navigation';
 
@@ -48,6 +48,8 @@ const Navigation = ({ activeSection, setActiveSection, setManualScroll }: {
 }) => {
     const pathname = usePathname();
     const router = useRouter();
+    const [hasScrolled, setHasScrolled] = useState(false);
+
     const sections = [
         { name: 'home', icon: <FaHome /> },
         { name: 'about', icon: <FaUser /> },
@@ -55,6 +57,15 @@ const Navigation = ({ activeSection, setActiveSection, setManualScroll }: {
         { name: 'projects', icon: <FaProjectDiagram /> },
         { name: 'contact', icon: <FaEnvelope /> }
     ];
+
+    useEffect(() => {
+        const handleScroll = () => {
+            setHasScrolled(window.scrollY > 50);
+        };
+
+        window.addEventListener('scroll', handleScroll);
+        return () => window.removeEventListener('scroll', handleScroll);
+    }, []);
 
     const handleClick = (section: string, e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
         e.preventDefault();
@@ -70,13 +81,16 @@ const Navigation = ({ activeSection, setActiveSection, setManualScroll }: {
 
     return (
         <motion.nav
-            className="fixed top-0 left-0 right-0 z-50 p-4"
+            className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${hasScrolled ? `` : `p-4`} `}
             initial={{ y: -100 }}
             animate={{ y: 0 }}
             transition={{ type: "spring", stiffness: 260, damping: 20 }}
         >
             <motion.div
-                className="max-w-min mx-auto bg-black backdrop-blur-lg rounded-2xl shadow-lg"
+                className={`transition-all duration-300 bg-black ${hasScrolled
+                    ? 'bg-black/60 backdrop-blur-lg shadow-white'
+                    : 'rounded-2xl'
+                    }`}
             >
                 <ul className="flex justify-center space-x-1 py-2 px-4">
                     {sections.map(({ name, icon }) => (

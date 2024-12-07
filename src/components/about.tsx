@@ -47,6 +47,7 @@ const About = () => {
             initial="hidden"
             animate={controls}
             variants={containerVariants}
+            className='container'
         >
             <motion.h2
                 className="text-4xl sm:text-6xl font-extrabold mb-5 sm:mb-12 text-center bg-clip-text text-transparent bg-gradient-to-r to-purple-600 from-blue-500"
@@ -78,7 +79,7 @@ const About = () => {
                             onClick={scrollToProjects}
                             className="block bg-gray-900 text-white text-center py-3 rounded-lg font-semibold hover:bg-opacity-90 transition duration-300"
                         >
-                            View My Projects
+                            View Projects
                         </a>
                     </motion.div>
                 </motion.div>
