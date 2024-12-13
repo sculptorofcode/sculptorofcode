@@ -55,10 +55,6 @@ I'm a motivated and detail-oriented Computer Science & Technology Diploma studen
   <img src="https://img.shields.io/badge/-Express.js-000000?style=for-the-badge&logo=express&logoColor=white"/>
 </div>
 
-### ⏱️ WakaTime Stats
-
-![Saikat's wakatime stats](https://github-readme-stats.vercel.app/api/wakatime?username=CyberSaikat&theme=tokyonight)
-
 ### 💡 Favorite Quote
 > "Any fool can write code that a computer can understand. Good programmers write code that humans can understand." - Martin Fowler
 
