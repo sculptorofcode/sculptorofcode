@@ -1,4 +1,4 @@
-import { NextRequest, NextResponse } from "next/server";
+import { NextResponse } from "next/server";
 import { Octokit } from "octokit";
 
 export async function GET() {
@@ -29,27 +29,23 @@ export async function GET() {
                 return false;
             });
 
-
-        let projects = res;
-
-        res.forEach((project: any, index: number) => {
-            octokit.request(`GET ${project.languages_url}`).then((response) => {
-                const languagesData = response.data;
-                const languages = Object.keys(languagesData);
-                projects[index].languages = languages;
-            }).catch(() => {
-                projects[index].languages = [];
-            });
-        });
-
         if (!res) {
-            return NextResponse.json({ message: 'Failed to fetch user data' }, { status: 500 });
+            return NextResponse.json(
+                { message: 'Failed to fetch user data' },
+                { status: 500, headers: { 'Cache-Control': 'no-store' } }
+            );
         }
 
-        return NextResponse.json(res, { status: 200 });
+        return NextResponse.json(res, {
+            status: 200,
+            headers: { 'Cache-Control': 'no-store' }
+        });
 
     } catch (e) {
-        console.log(e);
-        return NextResponse.json({ message: 'Failed to fetch user data' }, { status: 500 });
+        console.error(e);
+        return NextResponse.json(
+            { message: 'Failed to fetch user data' },
+            { status: 500, headers: { 'Cache-Control': 'no-store' } }
+        );
     }
 }
