@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
-import ParticlesBackground from "@/components/ParticlesBackground";
 import { ProfileProvider } from "@/context/ProfileContext";
-import Head from "next/head";
+import { Analytics } from "@vercel/analytics/react";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -70,6 +70,8 @@ export default function RootLayout({
           >
             <div className="min-h-screen text-gray-100">
               {children}
+              <Analytics />
+              <SpeedInsights />
             </div>
           </body>
         </html>
