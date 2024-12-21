@@ -103,6 +103,7 @@ export default function ProjectDetailsContent({ projectData }: { projectData: Pr
                                                 return <code className="bg-gray-800 text-gray-200 p-1 rounded-md px-2" {...props} />
                                             },
                                             pre: ({ node, ...props }) => {
+                                                props.className = `${props.className} bg-gray-800 text-gray-200 p-1 rounded-md break-words text-wrap px-4 max-w-[calc(100vw-65px)] overflow-x-auto`;
                                                 return <pre className="bg-gray-800 text-gray-200 p-1 rounded-md break-words text-wrap px-4" {...props} />
                                             },
                                             a: ({ node, ...props }) => {

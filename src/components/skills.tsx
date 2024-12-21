@@ -28,8 +28,8 @@ const skillCategories = [
         skills: [
             { name: 'React', icon: <FaReact />, level: 80, description: 'Advanced React development' },
             { name: 'Next.js', icon: <RiNextjsLine />, level: 90, description: 'Server-side rendering & static generation' },
-            { name: 'HTML', icon: <FaHtml5 />, level: 100, description: 'Semantic HTML & accessibility' },
-            { name: 'CSS', icon: <FaCss3 />, level: 100, description: 'Advanced styling & animations' },
+            { name: 'HTML', icon: <FaHtml5 />, level: 99.9, description: 'Semantic HTML & accessibility' },
+            { name: 'CSS', icon: <FaCss3 />, level: 99.9, description: 'Advanced styling & animations' },
             { name: 'JavaScript', icon: <FaJs />, level: 99.9, description: 'ES6+ features & modern practices' },
             { name: 'TypeScript', icon: <SiTypescript />, level: 90, description: 'Type-safe development' },
             { name: 'TailwindCSS', icon: <SiTailwindcss />, level: 99.9, description: 'Utility-first CSS framework' },
@@ -121,33 +121,45 @@ interface SkillCardProps {
     categoryColor: string;
 }
 
-const SkillCard: React.FC<SkillCardProps> = ({ skill, categoryColor }) => (
-    <TooltipProvider>
-        <Tooltip>
-            <TooltipTrigger asChild>
-                <motion.div
-                    className={`bg-gray-800 hover:bg-gray-700 rounded-xl p-4 flex flex-col items-center gap-2
-                     border border-gray-700 hover:border-${categoryColor}-500 transition-colors shadow-lg`}
-                    whileHover={{ scale: 1.05, y: -5 }}
-                    whileTap={{ scale: 0.95 }}
-                >
-                    <span className="text-2xl mb-2">{skill.icon}</span>
-                    <span className="font-medium text-sm text-center">{skill.name}</span>
-                    <div className="w-full bg-gray-700 h-1 rounded-full overflow-hidden">
+const SkillCard: React.FC<SkillCardProps> = ({ skill, categoryColor }) => {
+    const [showTooltip, setShowTooltip] = useState(false);
+
+    return (
+        <TooltipProvider>
+            <Tooltip open={showTooltip} onOpenChange={setShowTooltip} delayDuration={100}>
+                <TooltipTrigger asChild>
+                    <motion.div
+                        className={`bg-gray-800 hover:bg-gray-700 rounded-xl p-4 flex flex-col items-center gap-2
+                         border border-gray-700 hover:border-${categoryColor}-500 transition-colors shadow-lg`}
+                        whileHover={{ scale: 1.05, y: -5 }}
+                        whileTap={{ scale: 0.95 }}
+                        onClick={() => setShowTooltip(true)}
+                    >
+                        <span className="text-2xl mb-2">{skill.icon}</span>
+                        <span className="font-medium text-sm text-center">{skill.name}</span>
+                        <div className="w-full bg-gray-700 h-1 rounded-full overflow-hidden">
+                            <div
+                                className={`h-full bg-${categoryColor}-500`}
+                                style={{ width: `${(skill.level / 100) * 100}%` }}
+                            />
+                        </div>
+                    </motion.div>
+                </TooltipTrigger>
+                <TooltipContent className="p-4 bg-gray-800 rounded-lg shadow-lg">
+                    <h4 className="text-lg font-semibold text-white mb-2">{skill.name}</h4>
+                    <p className="text-sm text-gray-400 mb-2">{skill.description}</p>
+                    <div className="w-full bg-gray-700 h-1 rounded-full overflow-hidden mb-2">
                         <div
                             className={`h-full bg-${categoryColor}-500`}
                             style={{ width: `${(skill.level / 100) * 100}%` }}
                         />
                     </div>
-                </motion.div>
-            </TooltipTrigger>
-            <TooltipContent>
-                <p>{skill.description}</p>
-                <p className="text-sm text-gray-400">Proficiency: {skill.level}%</p>
-            </TooltipContent>
-        </Tooltip>
-    </TooltipProvider>
-);
+                    <p className="text-sm text-gray-400">Proficiency: {skill.level}%</p>
+                </TooltipContent>
+            </Tooltip>
+        </TooltipProvider>
+    );
+};
 
 const MergedSkillsShowcase = () => {
     const [selectedCategory, setSelectedCategory] = useState('Frontend Development');
@@ -189,8 +201,7 @@ const MergedSkillsShowcase = () => {
                                 onClick={() => {
                                     setSelectedCategory(category.name);
                                 }}
-                                className={`w-full text-left p-4 rounded-xl flex items-center gap-3 transition-all
-                  ${selectedCategory === category.name
+                                className={`w-full text-left p-4 rounded-xl flex items-center gap-3 transition-all ${selectedCategory === category.name
                                         ? `bg-gradient-to-r ${category.gradient} text-white`
                                         : 'bg-gray-800 text-gray-400 hover:bg-gray-700'}`}
                                 whileHover={{ x: 10 }}
