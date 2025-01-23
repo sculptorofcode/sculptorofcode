@@ -33,15 +33,15 @@ I'm a motivated and detail-oriented Computer Science & Technology Diploma studen
 
 ### 📊 GitHub Stats and Activity
 
-![Profile Views](https://komarev.com/ghpvc/?username=CyberSaikat&color=blue&style=for-the-badge)
+![Profile Views](https://komarev.com/ghpvc/?username=sculptorofcode&color=blue&style=for-the-badge)
 
-![GitHub Streak](https://github-readme-streak-stats.herokuapp.com/?user=CyberSaikat&theme=tokyonight)
+![GitHub Streak](https://github-readme-streak-stats.herokuapp.com/?user=sculptorofcode&theme=tokyonight)
 
-![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=CyberSaikat&layout=compact&theme=tokyonight)
+![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=sculptorofcode&layout=compact&theme=tokyonight)
 
-![trophy](https://github-profile-trophy.vercel.app/?username=CyberSaikat&theme=tokyonight&column=7)
+![trophy](https://github-profile-trophy.vercel.app/?username=sculptorofcode&theme=tokyonight&column=7)
 
-![Saikat's github activity graph](https://github-readme-activity-graph.vercel.app/graph?username=CyberSaikat&theme=tokyo-night)
+![Saikat's github activity graph](https://github-readme-activity-graph.vercel.app/graph?username=sculptorofcode&theme=tokyo-night)
 
 ### 💻 Skills
 <div style="display:inline-flex; gap:10px;flex-wrap:wrap;">
