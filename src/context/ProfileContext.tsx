@@ -23,7 +23,7 @@ interface ProfileProviderProps {
 export const ProfileProvider: React.FC<ProfileProviderProps> = ({ children }) => {
   const profileData: ProfileContextType = {
     linkedIn: 'https://www.linkedin.com/in/saikat-roy-358204294/',
-    github: 'https://github.com/CyberSaikat',
+    github: 'https://github.com/sculptorofcode',
     contactEmail: 'saikatroydot@gmail.com',
   };
 

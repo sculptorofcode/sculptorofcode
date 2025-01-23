@@ -6,7 +6,7 @@ import Projects from '@/components/projects'
 import Contact from '@/components/contact'
 import ParticlesBackground from '@/components/ParticlesBackground'
 import Navigation from '@/components/Navigation';
-import HomeSection from '@/components/home';
+import HomeSection from '@/components/HomeSection';
 import MergedSkillsShowcase from '@/components/skills';
 
 const Home = () => {
@@ -53,8 +53,7 @@ const Home = () => {
       <Navigation activeSection={activeSection} setActiveSection={setActiveSection} setManualScroll={setManualScroll} />
 
       <main className="">
-        <section id="home" ref={sectionsRef.home} className={`pt-40 sm:min-h-screen flex items-center justify-center relative overflow-hidden sm:pt-20`}>
-          <ParticlesBackground />
+        <section id="home" ref={sectionsRef.home} className={`sm:min-h-screen flex items-center justify-center relative overflow-hidden`}>
           <HomeSection isLoaded={isLoaded} />
         </section>
         <section id="about" ref={sectionsRef.about} className='sm:pt-[7.5rem] py-10 pt-[5rem] bg-black'>
