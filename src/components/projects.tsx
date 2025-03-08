@@ -1,3 +1,5 @@
+"use client";
+
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FaGithub, FaExternalLinkAlt, FaInfoCircle } from 'react-icons/fa';
@@ -5,8 +7,10 @@ import Masonry from 'react-masonry-css';
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from './ui/dialog';
 import Link from 'next/link';
 import { Project } from '@/app/abstract/interface';
+import { usePageTransition } from '@/context/PageTransitionContext';
 
 const ProjectCard: React.FC<{ project: Project }> = ({ project }) => {
+    const { navigateWithTransition } = usePageTransition();
     const [showModal, setShowModal] = useState(false);
 
     return (
@@ -61,7 +65,10 @@ const ProjectCard: React.FC<{ project: Project }> = ({ project }) => {
                         />
                     )}
                     <ProjectButton
-                        href={`/projects/${project.name}`}
+                        href={`/projects/${project.id}`}
+                        onClick={() => {
+                            navigateWithTransition(`/projects/${project.name.replaceAll(' ', '-').toLowerCase()}`);
+                        }}
                         icon={<FaInfoCircle />}
                         text="Learn More"
                         ariaLabel={`Learn more about ${project.name}`}
@@ -75,12 +82,22 @@ const ProjectCard: React.FC<{ project: Project }> = ({ project }) => {
 };
 
 const ProjectButton: React.FC<{ href?: string; onClick?: () => void; icon: React.ReactNode; text: string; ariaLabel: string, target: string }> = ({ href, onClick, icon, text, ariaLabel, target }) => {
+
     const baseClasses = "bg-gradient-to-r from-blue-500 to-purple-600 text-white px-3 py-2 sm:px-2 sm:py-1 rounded-md flex items-center justify-center transition-all duration-300 ease-in-out focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 duration-500 ease-in-out";
     const hoverClasses = "hover:from-blue-600 hover:to-purple-700 hover:shadow-lg";
 
     if (href) {
         return (
-            <Link href={href} target={target}>
+            <Link target={target}
+                onClick={(e) => {
+                    if (onClick) {
+                        e.preventDefault();
+                        onClick();
+                    }
+                }}
+                href={href} passHref={true} style={{
+                    textDecoration: 'none'
+                }}>
                 <span className={`${baseClasses} ${hoverClasses}`} aria-label={ariaLabel}>
                     {icon}<span className='hidden sm:block ms-2'> {text}</span>
                 </span>
@@ -140,12 +157,15 @@ const Projects: React.FC = () => {
                     throw new Error('Failed to fetch projects');
                 }
                 const data = await response.json();
-                const enhancedData = data.map((project: any, index: number) => ({
-                    ...project,
-                    name: project.name.replaceAll('-', ' ').split(' ').map((s: string) => s.charAt(0).toUpperCase() + s.slice(1)).join(' '),
-                    type: getProjectTypeBasedOnLanguages(project.languages),
-                    role: "Lead Developer",
-                }));
+
+                const enhancedData = await data.map((project: any, index: number) => {
+                    return {
+                        ...project,
+                        name: project.name.replaceAll('-', ' ').split(' ').map((s: string) => s.charAt(0).toUpperCase() + s.slice(1)).join(' '),
+                        type: getProjectTypeBasedOnLanguages(project.languages),
+                        role: "Lead Developer",
+                    };
+                });
                 setProjects(enhancedData);
                 setIsLoading(false);
             } catch (err) {
@@ -191,7 +211,7 @@ const Projects: React.FC = () => {
         >
 
             <motion.h2
-                className="text-4xl sm:text-6xl font-extrabold mb-5 sm:mb-12 text-center bg-clip-text text-transparent bg-gradient-to-r to-purple-600 from-blue-500"
+                className="text-4xl sm:text-6xl font-extrabold pb-5 sm:pb-12 text-center bg-clip-text text-transparent bg-gradient-to-r to-purple-600 from-blue-500"
                 style={{
                     WebkitBackgroundClip: "text",
                     MozBackgroundClip: "text",

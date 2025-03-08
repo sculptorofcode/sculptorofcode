@@ -172,7 +172,7 @@ const MergedSkillsShowcase = () => {
         }
     };
     return (
-        <div className="min-h-screen py-16 px-4">
+        <div className="min-h-max py-16 px-4">
             <span className='bg-yellow-500'></span>
             <span className='bg-red-500'></span>
             <span className='bg-blue-500'></span>

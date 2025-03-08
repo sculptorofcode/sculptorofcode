@@ -4,6 +4,9 @@ import "./globals.css";
 import { ProfileProvider } from "@/context/ProfileContext";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import CustomCursor from "@/components/CustomCursor";
+import PageTransition from "@/components/PageTransition";
+import { PageTransitionProvider } from "@/context/PageTransitionContext";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -62,20 +65,21 @@ export default function RootLayout({
 }>) {
 
   return (
-    <>
-      <ProfileProvider>
-        <html lang="en">
-          <body
-            className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-          >
-            <div className="min-h-screen text-gray-100">
-              {children}
-              <Analytics />
-              <SpeedInsights />
-            </div>
-          </body>
-        </html>
-      </ProfileProvider>
-    </>
+    <html lang="en">
+      <body>
+        <PageTransitionProvider>
+          <ProfileProvider>
+            <PageTransition>
+              <div className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen text-gray-100`}>
+                {children}
+                <CustomCursor />
+                <Analytics />
+                <SpeedInsights />
+              </div>
+            </PageTransition>
+          </ProfileProvider>
+        </PageTransitionProvider>
+      </body>
+    </html>
   );
 }

@@ -1,106 +1,31 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { TypeAnimation } from 'react-type-animation';
 import { FaGithub, FaLinkedin, FaEnvelope, FaDownload } from 'react-icons/fa';
 import { useProfile } from '@/context/ProfileContext';
 import Image from 'next/image';
-
-const CustomCursor = () => {
-    const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-    const [isPointer, setIsPointer] = useState(false);
-
-    useEffect(() => {
-        const mouseMove = (e: MouseEvent) => {
-            setMousePosition({ x: e.clientX - window.innerWidth / 2, y: e.clientY - window.innerHeight / 2 });
-        };
-
-        const mouseOver = (e: MouseEvent) => {
-            const target = e.target as HTMLElement;
-            setIsPointer(window.getComputedStyle(target).cursor === 'pointer');
-        };
-
-        window.addEventListener('mousemove', mouseMove);
-        window.addEventListener('mouseover', mouseOver);
-
-        return () => {
-            window.removeEventListener('mousemove', mouseMove);
-            window.removeEventListener('mouseover', mouseOver);
-        };
-    }, []);
-
-    const springConfig = { damping: 25, stiffness: 400, mass: 0.1 };
-
-    return (
-        <>
-            {/* Inner dot */}
-            <motion.div
-                className="fixed w-3 h-3 bg-blue-400 rounded-full pointer-events-none z-50 mix-blend-screen"
-                animate={{
-                    x: mousePosition.x - 6,
-                    y: mousePosition.y - 6,
-                    scale: isPointer ? 1.2 : 1,
-                }}
-                transition={springConfig}
-            />
-            <motion.div
-                className="fixed w-6 h-6 border border-blue-400 rounded-full pointer-events-none z-50"
-                animate={{
-                    x: mousePosition.x - 12,
-                    y: mousePosition.y - 12,
-                    scale: isPointer ? 1.4 : 1,
-                }}
-                transition={{
-                    ...springConfig,
-                    damping: 20,
-                }}
-            />
-        </>
-    );
-};
+import ParticleBackground from './ParticleBackground';
 
 const HomeSection = ({ isLoaded }: { isLoaded: boolean; }) => {
     const { github, linkedIn, contactEmail } = useProfile();
     const containerRef = useRef<HTMLDivElement>(null);
 
-    useEffect(() => {
-        const handleMouseMove = (e: MouseEvent) => {
-            if (!containerRef.current) return;
-            const { left, top, width, height } = containerRef.current.getBoundingClientRect();
-            const x = (e.clientX - left) / width;
-            const y = (e.clientY - top) / height;
-
-            containerRef.current.style.setProperty('--mouse-x', `${x * 100}%`);
-            containerRef.current.style.setProperty('--mouse-y', `${y * 100}%`);
-        };
-
-        window.addEventListener('mousemove', handleMouseMove);
-        return () => window.removeEventListener('mousemove', handleMouseMove);
-    }, []);
-
     return (
-        <div className="min-h-screen flex items-center justify-center relative overflow-hidden bg-gray-900 w-screen cursor-none" ref={containerRef}>
-            <CustomCursor />
+        <div className="min-h-screen flex items-center justify-center relative overflow-hidden bg-gray-900 w-screen" ref={containerRef}>
+            <ParticleBackground />
 
-            {/* Animated background gradient */}
-            <div className="absolute inset-0 bg-gradient-to-br from-blue-600/20 to-purple-600/20"
-                style={{
-                    background: 'radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(56, 189, 248, 0.15) 0%, rgba(67, 56, 202, 0.15) 50%, transparent 100%)',
-                }}
-            />
-
-            {/* Rest of your existing code remains the same */}
             <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: isLoaded ? 1 : 0 }}
                 transition={{ duration: 1 }}
                 className="relative z-10 w-full max-w-7xl mx-auto px-4 py-12"
             >
-                <div className="grid grid-cols-1 lg:grid-cols-5 gap-12 items-center">
+                <div className="flex flex-col-reverse md:flex-row grid-cols-1 lg:grid-cols-5 gap-12 items-center">
                     <motion.div
                         initial={{ x: -100, opacity: 0 }}
                         animate={{ x: 0, opacity: 1 }}
                         transition={{ delay: 0.2, duration: 0.8 }}
-                        className="lg:col-span-3 space-y-8"
+                        className="lg:col-span-3 space-y-8 flex-1"
                     >
                         <h1 className="text-5xl sm:text-7xl md:text-8xl font-black tracking-tight">
                             <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-600 relative">
@@ -111,7 +36,7 @@ const HomeSection = ({ isLoaded }: { isLoaded: boolean; }) => {
 
                         <div className="relative">
                             <div className="absolute inset-0 bg-gradient-to-r from-blue-500/10 to-purple-500/10 blur-xl"></div>
-                            <div className="relative bg-gray-900/50 backdrop-blur-sm rounded-2xl p-6 border border-white/10">
+                            <div className="relative bg-gray-900/50 backdrop-blur-sm rounded-2xl p-4 border border-white/10">
                                 <TypeAnimation
                                     sequence={[
                                         'Computer Science Student',
@@ -178,7 +103,7 @@ const HomeSection = ({ isLoaded }: { isLoaded: boolean; }) => {
                         initial={{ x: 100, opacity: 0 }}
                         animate={{ x: 0, opacity: 1 }}
                         transition={{ delay: 0.4, duration: 0.8 }}
-                        className="lg:col-span-2 relative"
+                        className="lg:col-span-2 relative w-full md:w-1/2 mt-14 md:mt-0"
                     >
                         <div className="relative aspect-square max-w-md mx-auto">
                             <div className="absolute inset-0 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full animate-pulse blur-2xl opacity-30"></div>

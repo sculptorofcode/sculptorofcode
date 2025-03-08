@@ -1,10 +1,9 @@
 "use client";
 
-import { useState, useEffect, useRef } from 'react'
-import About from '@/components/about'
-import Projects from '@/components/projects'
-import Contact from '@/components/contact'
-import ParticlesBackground from '@/components/ParticlesBackground'
+import { useState, useEffect, useRef } from 'react';
+import About from '@/components/about';
+import Projects from '@/components/projects';
+import Contact from '@/components/contact';
 import Navigation from '@/components/Navigation';
 import HomeSection from '@/components/HomeSection';
 import MergedSkillsShowcase from '@/components/skills';
@@ -30,7 +29,10 @@ const Home = () => {
           setActiveSection(entry.target.id);
         }
       });
-    }, { threshold: 0.5 });
+    }, { 
+      threshold: [0.2, 0.5, 0.8],
+      rootMargin: '-10% 0px -10% 0px' 
+    });
 
     Object.values(sectionsRef).forEach(ref => {
       if (ref.current) {
@@ -52,7 +54,7 @@ const Home = () => {
     <>
       <Navigation activeSection={activeSection} setActiveSection={setActiveSection} setManualScroll={setManualScroll} />
 
-      <main className="">
+      <main>
         <section id="home" ref={sectionsRef.home} className={`sm:min-h-screen flex items-center justify-center relative overflow-hidden`}>
           <HomeSection isLoaded={isLoaded} />
         </section>
@@ -62,7 +64,7 @@ const Home = () => {
         <section id="skills" ref={sectionsRef.skills} className='sm:pt-[7.5rem] py-10 pt-[5rem] bg-black'>
           <MergedSkillsShowcase />
         </section>
-        <section id="projects" ref={sectionsRef.projects} className='sm:pt-[7.5rem] py-10 pt-[5rem] bg-black'>
+        <section id="projects" ref={sectionsRef.projects} className='sm:pt-[7.5rem] py-20 pt-[5rem] min-h-screen bg-black'>
           <Projects />
         </section>
         <section id="contact" ref={sectionsRef.contact} className='sm:pt-[7.5rem] py-10 pt-[5rem] bg-black'>

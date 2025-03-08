@@ -44,6 +44,128 @@ body {
   scrollbar-color: #4a4a4a #2a2a2a;
 }
 
+.cursor-ring {
+  position: fixed;
+  width: 40px;
+  height: 40px;
+  border: 2px solid rgba(255, 99, 71, 0.5); /* Tomato color */
+  border-radius: 50%;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  z-index: 9999;
+  transition: all 0.2s ease-out;
+}
+
+/* Innovative cursor styles */
+.cursor-dot-inner {
+  position: fixed;
+  width: 8px;
+  height: 8px;
+  pointer-events: none;
+  z-index: 10001;
+  background: rgb(var(--cursor-color, 59 130 246));
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  mix-blend-mode: difference;
+}
+
+.cursor-ring-outer {
+  position: fixed;
+  width: 40px;
+  height: 40px;
+  pointer-events: none;
+  z-index: 10000;
+  border: 2px solid rgba(var(--cursor-color, 59 130 246), 0.5);
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  transition: opacity 0.3s;
+}
+
+.cursor-trail {
+  position: fixed;
+  width: 6px;
+  height: 6px;
+  pointer-events: none;
+  z-index: 9999;
+  background: rgb(var(--cursor-color, 59 130 246));
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  mix-blend-mode: difference;
+  transition: opacity 0.2s;
+}
+
+/* Text cursor style */
+.cursor-text {
+  width: 2px;
+  height: 1.2em;
+  border-radius: 1px;
+  background-color: rgba(255, 255, 255, 0.9);
+  border: none;
+  animation: blink 0.7s ease-in-out infinite;
+  mix-blend-mode: difference;
+  box-shadow: 0 0 2px rgba(255, 255, 255, 0.5);
+}
+
+/* Button/link cursor style */
+.cursor-button {
+  scale: 1.2;
+  width: 50px;
+  height: 50px;
+  border-width: 2px;
+  border-color: rgba(255, 99, 71, 0.8); /* Tomato color */
+  background-color: rgba(255, 99, 71, 0.1); /* Tomato color */
+  mix-blend-mode: difference;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 0 15px rgba(255, 99, 71, 0.3); /* Tomato color */
+}
+
+@keyframes blink {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
+/* Cursor animations */
+@keyframes cursorPing {
+  0% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(2);
+    opacity: 0;
+  }
+}
+
+@keyframes cursorRotate {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+/* Cursor states */
+.cursor-ring-outer:before {
+  content: '';
+  position: absolute;
+  top: -4px;
+  left: -4px;
+  right: -4px;
+  bottom: -4px;
+  border: 2px solid transparent;
+  border-radius: 50%;
+  animation: cursorPing 2s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+.cursor-ring-outer.hovered {
+  animation: cursorRotate 2s linear infinite;
+}
+
 .my-masonry-grid {
   display: -webkit-box;
   display: -ms-flexbox;
