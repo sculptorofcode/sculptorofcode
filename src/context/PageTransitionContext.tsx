@@ -29,9 +29,7 @@ export const PageTransitionProvider: React.FC<{ children: React.ReactNode }> = (
     const completeTransition = function (targetPath: string) {
         if (targetPath) {
             router.push(targetPath);
-            console.log('Navigating to:', targetPath);
             setTargetPath(targetPath.split('#')[0]);
-            console.log('Target path:', targetPath.split('#')[0]);
         }
     };
 
