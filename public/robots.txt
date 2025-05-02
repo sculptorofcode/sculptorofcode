@@ -1,9 +1,0 @@
-# *
-User-agent: *
-Allow: /
-
-# Host
-Host: https://cyber-saikat.vercel.app/
-
-# Sitemaps
-Sitemap: https://cyber-saikat.vercel.app/sitemap.xml
