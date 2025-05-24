@@ -5,7 +5,7 @@
 
 *Full-Stack Developer • Building Scalable Digital Solutions*
 
-[![Typing SVG](https://readme-typing-svg.herokuapp.com?font=JetBrains+Mono&size=20&duration=3000&pause=1000&color=6C63FF&center=true&vCenter=true&width=600&lines=Jr.+Software+Developer+@+Topfin+Global;Full-Stack+Web+%26+Mobile+Developer;5%2B+Custom+Applications+Deployed;Clean+Code+%26+Performance+Advocate)](https://git.io/typing-svg)
+[![Typing SVG](https://readme-typing-svg.herokuapp.com?font=JetBrains+Mono&size=20&duration=3000&pause=1000&color=6C63FF&center=true&vCenter=true&width=600&lines=Jr.+Software+Developer+@+Topfin+Global;Full-Stack+Web+%26+Mobile+Developer;5%2B+Custom+Applications+Deployed;Clean+Code+%26+Performance+Advocate)](#)
 
 [![Portfolio](https://img.shields.io/badge/Portfolio-6C63FF?style=for-the-badge&logo=safari&logoColor=white)](https://saikatroy.vercel.app)
 [![Resume](https://img.shields.io/badge/Resume-FF6B6B?style=for-the-badge&logo=adobeacrobatreader&logoColor=white)](https://wbeokcjfdnizxajsdghm.supabase.co/storage/v1/object/public/documents/resume-1747994268046.pdf)
@@ -151,6 +151,6 @@ const saikatRoy = {
 *Want to collaborate? Let's create something extraordinary together.*
 
 [![Email](https://img.shields.io/badge/Email-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:saikatroydot@gmail.com)
-[![Website](https://img.shields.io/badge/Website-000000?style=for-the-badge&logo=About.me&logoColor=white)](https://saikatroy.me)
+[![Website](https://img.shields.io/badge/Website-000000?style=for-the-badge&logo=About.me&logoColor=white)](https://saikatroy.vercel.app)
 
 </div>
