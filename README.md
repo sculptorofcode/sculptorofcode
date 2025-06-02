@@ -78,13 +78,13 @@ const saikatRoy = {
 
 | Project | Description | Tech Stack | Links |
 |---------|-------------|------------|-------|
+| **📁 Zen File Manager** | Clean, modern web-based file management system with intuitive UI and comprehensive features | `PHP` `JavaScript` `CSS3` `HTML5` | [Code](https://github.com/sculptorofcode/zen-file-manager) • [Live Demo](#) |
 | **🎓 Student Management Portal (SMP)** | Comprehensive mobile app for educational institutions streamlining student-teacher management | `Flutter` `Dart` `Firebase` | [Code](https://github.com/sculptorofcode/smp-app) • [Details](https://saikatroy.vercel.app/projects/student-management-portal-(smp)-app) |
 | **📚 The Educative** | Cutting-edge educational platform empowering developers with advanced web dev skills | `TypeScript` `Next.js` `TailwindCSS` `MongoDB` `Mongoose` | [Code](https://github.com/sculptorofcode/the-educative) • [Live](https://the-educative.vercel.app/) |
 | **🌟 DailyBoost** | Mobile wellness app providing daily inspirational quotes and mood enhancement features | `Flutter` `Dart` `Material Design` | [Live App](https://www.indusappstore.com/apps/health-and-fitness/daily-boost/com.srtech.dailyboost) • [Web](https://dailyboost-web.vercel.app/) |
 | **📊 Inventory Management System** | Web-based platform for comprehensive product, order, and supplier management | `PHP` `JavaScript` `jQuery` `CSS3` | [Live](https://ims.wuaze.com/) • [Details](https://saikatroy.vercel.app/projects/inventory-management-system) |
 | **✨ Textify** | Creative text composition tool for stunning social media posts and presentations | `React` `Flutter` `Dart` | [Code](https://github.com/sculptorofcode/Textify) • [Live](https://textify-alpha.vercel.app/) |
 | **📋 Task Management Soft** | Robust task management application with NextAuth authentication and MongoDB | `Next.js` `MongoDB` `NextAuth` | [Code](https://github.com/sculptorofcode/task-management-soft) • [Live](https://task-management-soft.vercel.app/) |
-| **🏥 Hospital Management System** | Enterprise healthcare solutions with advanced patient & inventory management | `Python` `Flask` `PHP` `MySQL` | *Enterprise Project* |
 
 </div>
 
