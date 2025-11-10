@@ -29,13 +29,6 @@
 - 🏥 **Hospital Solutions** using Python Flask & PHP
 - 🎯 **Tourism, Stock & Car Rental** management systems
 
-### 🔗 **Connect**
-```bash
-$ curl -X GET "https://saikatroy.vercel.app"
-$ echo "softwaredevsaikat@gmail.com" | mail
-$ call +91-97325-48768
-```
-
 ### 🛠️ **Tech Stack & Proficiency**
 
 ```typescript
@@ -61,6 +54,13 @@ const saikatRoy = {
   <img src="https://img.shields.io/badge/Bengali-FF6B6B?style=for-the-badge" alt="Bengali" />
   <img src="https://img.shields.io/badge/Hindi-39E09B?style=for-the-badge" alt="Hindi" />
 </div>
+
+### 🔗 **Connect**
+```bash
+$ curl -X GET "https://saikatroy.vercel.app"
+$ echo "softwaredevsaikat@gmail.com" | mail
+$ call +91-97325-48768
+```
 
 ### 🎯 **Featured Projects**
 
