@@ -32,7 +32,7 @@
 ### 🛠️ **Tech Stack & Proficiency**
 
 ```typescript
-const saikatRoy = {
+const SaikatRoy = {
   expertise: {
     frontend: ["JavaScript", "HTML/CSS", "TypeScript", "Next.js"],
     styling: ["TailwindCSS", "Bootstrap"],
