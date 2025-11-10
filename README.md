@@ -17,14 +17,15 @@
 
 <table>
 <tr>
-<td width="50%">
+<td width="100%">
 
 ### 💼 **Professional Journey**
-**Currently:** Jr. Software Developer at **Topfin Global Pvt Ltd**  
-**Previously:** Jr. Software Developer at **Cyber Help India**  
+**Currently:** Software Developer at **Innovins Softtech Solutions Pvt. Ltd** *(Oct 2025 - Present)*  
+**Previously:** Jr. Software Developer at **Topfin Global Pvt Ltd**  
+**Also Previously:** Jr. Software Developer at **Cyber Help India**  
 **Education:** Computer Science & Technology  
 **Institution:** Siliguri Government Polytechnic  
-**Location:** Siliguri, West Bengal, India
+**Location:** Mumbai, Maharashtra, India (Remote) | Siliguri, West Bengal, India
 
 ### 🚀 **Impact & Achievements**
 - 💡 **5+ Custom Web Applications** deployed across industries
@@ -40,7 +41,9 @@ $ call +91-97325-48768
 ```
 
 </td>
-<td width="50%">
+</tr>
+<tr>
+<td width="100%">
 
 ### 🛠️ **Tech Stack & Proficiency**
 
@@ -54,8 +57,8 @@ const saikatRoy = {
     databases: ["MySQL", "MongoDB", "Firebase"],
     tools: ["Git", "Mongoose ORM", "Application Design"]
   },
-  currentRole: "Jr. Software Developer",
-  workingAt: "Topfin Global Pvt Ltd",
+  currentRole: "Software Developer",
+  workingAt: "Innovins Softtech Solutions Pvt. Ltd",
   specialization: "Scalable Web & Mobile Solutions",
   philosophy: "Clean Code • Performance • Innovation"
 }
