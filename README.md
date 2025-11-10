@@ -15,10 +15,6 @@
 
 ---
 
-<table>
-<tr>
-<td width="100%">
-
 ### 💼 **Professional Journey**
 **Currently:** Software Developer at **Innovins Softtech Solutions Pvt. Ltd** *(Oct 2025 - Present)*  
 **Previously:** Jr. Software Developer at **Topfin Global Pvt Ltd**  
@@ -39,11 +35,6 @@ $ curl -X GET "https://saikatroy.vercel.app"
 $ echo "softwaredevsaikat@gmail.com" | mail
 $ call +91-97325-48768
 ```
-
-</td>
-</tr>
-<tr>
-<td width="100%">
 
 ### 🛠️ **Tech Stack & Proficiency**
 
@@ -70,10 +61,6 @@ const saikatRoy = {
   <img src="https://img.shields.io/badge/Bengali-FF6B6B?style=for-the-badge" alt="Bengali" />
   <img src="https://img.shields.io/badge/Hindi-39E09B?style=for-the-badge" alt="Hindi" />
 </div>
-
-</td>
-</tr>
-</table>
 
 ### 🎯 **Featured Projects**
 
